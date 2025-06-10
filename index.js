@@ -15,7 +15,7 @@ app.post("/api/chat", async (req, res) => {
       {
         model: "gpt-4",
         messages: [
-          { role: "system", content: "Tu esi pagalbininkas, kuris padeda verslui." },
+          { role: "system", content: "Tu esi AI pagalbininkas, padedantis verslui." },
           { role: "user", content: userMessage }
         ]
       },
@@ -29,7 +29,11 @@ app.post("/api/chat", async (req, res) => {
 
     res.json({ reply: response.data.choices[0].message.content });
   } catch (error) {
-    res.status(500).json({ error: "Įvyko klaida." });
+    console.error("OpenAI klaida:", error.response?.data || error.message);
+    res.status(500).json({
+      error: "OpenAI klaida",
+      details: error.response?.data || error.message
+    });
   }
 });
 
