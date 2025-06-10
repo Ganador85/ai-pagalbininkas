@@ -15,7 +15,10 @@ app.post("/api/chat", async (req, res) => {
       {
         model: "gpt-4",
         messages: [
-          { role: "system", content: "Tu esi AI pagalbininkas, padedantis verslui." },
+          { 
+  role: "system", 
+  content: "Tu esi AI pagalbininkas, paremtas GPT-4, kuris turi naujausią informaciją apie OpenAI modelius. Atsakinėk tiksliai ir remkis 2025 m. duomenimis." 
+},
           { role: "user", content: userMessage }
         ]
       },
